@@ -1,0 +1,93 @@
+S
+    Program $
+Program
+    VarDeclList FunDeclList
+VarDeclList
+    VarDecl VarDeclList
+    epsilon
+VarDecl
+    Type id F1
+F1
+    ;
+    [ num ] ;
+FunDeclList
+    FunDecl F2
+F2
+    epsilon
+    FunDeclList
+FunDecl
+    Type id ( ParamDeclList  ) Block
+ParamDeclList
+    ParamDeclListTail
+    epsilon
+ParamDeclListTail
+    ParamDecl F3
+F3
+    epsilon
+    , ParamDeclListTail
+ParamDecl
+    Type id F4
+F4
+    epsilon
+    [ ]
+Block
+    { VarDeclList StmtList }
+Type
+    int
+    char
+StmtList
+    Stmt F5
+F5
+    epsilon
+    StmtList
+Stmt
+    ;
+    Expr ;
+    return Expr ;
+    break ;
+    if ( Expr ) Stmt else Stmt
+    while ( Expr ) Stmt
+    Block
+Expr
+    Primary R1
+    UnaryOp Expr R1
+    id F6 R1
+R1
+    BinOp Expr R1
+    epsilon    
+F6
+    = Expr
+    [ Expr ] = Expr
+Primary
+    id F7
+    num
+    ( Expr )
+F7
+    epsilon
+    ( ExprList )
+    [ Expr ]
+ExprList
+    ExprListTail
+    epsilon
+ExprListTail
+    Expr F8
+F8
+    epsilon
+    , ExprListTail
+UnaryOp
+    -
+    !
+BinOp
+    +
+    -
+    *
+    /
+    ==
+    !=
+    <
+    <=
+    >
+    >=
+    &&
+    ||
+	
